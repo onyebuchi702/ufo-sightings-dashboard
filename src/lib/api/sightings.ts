@@ -49,7 +49,7 @@ export async function fetchSightingsFromBackend(): Promise<
   ProcessedSighting[]
 > {
   try {
-    const response = await fetch("/api/ufo-sightings");
+    const response = await fetch("/api/sightings");
 
     if (!response.ok) {
       throw new Error(
