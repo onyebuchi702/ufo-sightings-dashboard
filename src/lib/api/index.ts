@@ -1,1 +1,1 @@
-export { fetchUfoSightingsFromApi } from "./sightings";
+export { fetchUfoSightingsFromApi } from "./sightings/sightings";
