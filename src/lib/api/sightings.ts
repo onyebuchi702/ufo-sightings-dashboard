@@ -1,9 +1,9 @@
 import { ProcessedSighting, UfoSighting, ApiResponse } from "../types";
 import { getWeekNumber } from "../utils";
 
-const API_URL = process.env.API_URL!;
-
 export async function fetchUfoSightings(): Promise<ProcessedSighting[]> {
+  const API_URL = process.env.API_URL!;
+
   try {
     const response = await fetch(API_URL);
 
@@ -49,26 +49,24 @@ export async function fetchSightingsFromBackend(): Promise<
   ProcessedSighting[]
 > {
   try {
-    const response = await fetch("/api/sightings");
+    const res = await fetch("/api/sightings");
 
-    if (!response.ok) {
-      throw new Error(
-        `Backend API error: ${response.status} ${response.statusText}`
-      );
+    if (!res.ok) {
+      throw new Error(`Backend API error: ${res.status} ${res.statusText}`);
     }
 
-    const result = await response.json();
+    const json = await res.json();
 
-    if (result.error) {
-      throw new Error(result.error);
+    if ("error" in json) {
+      throw new Error(json.error);
     }
 
-    return result.data.map((sighting: any) => ({
+    return json.data.map((sighting: any) => ({
       ...sighting,
       parsedDate: new Date(sighting.parsedDate),
     }));
-  } catch (error) {
-    console.error("Error fetching UFO sightings from backend:", error);
-    throw error;
+  } catch (err) {
+    console.error("Error in API route:", err);
+    throw err;
   }
 }
