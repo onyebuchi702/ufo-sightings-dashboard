@@ -7,9 +7,9 @@ import {
   fetchUfoSightings,
   fetchSightingsFromBackend,
 } from "./sightings";
-import { getWeekNumber } from "../utils";
+import { getWeekNumber } from "@/lib/utils";
 
-jest.mock("../utils", () => ({
+jest.mock("@/lib/utils", () => ({
   getWeekNumber: jest.fn(),
 }));
 

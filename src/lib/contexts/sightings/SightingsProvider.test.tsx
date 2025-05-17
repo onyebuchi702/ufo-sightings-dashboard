@@ -4,9 +4,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { MockedFunction } from "jest-mock";
 import { expect, jest, describe, it } from "@jest/globals";
 import { SightingsProvider } from "./Sightings.provider";
-import { fetchSightingsFromBackend } from "@/lib/api/sightings";
+import { fetchSightingsFromBackend } from "@/lib/api";
 
-jest.mock("@/lib/api/sightings", () => ({
+jest.mock("@/lib/api", () => ({
   fetchSightingsFromBackend: jest.fn(),
 }));
 

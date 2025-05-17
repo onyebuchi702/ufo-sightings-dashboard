@@ -1,5 +1,5 @@
-import { ProcessedSighting, UfoSighting, ApiResponse } from "../types";
-import { getWeekNumber } from "../utils";
+import { ProcessedSighting, UfoSighting, ApiResponse } from "@/lib/types";
+import { getWeekNumber } from "@/lib/utils";
 
 export async function fetchUfoSightings(): Promise<ProcessedSighting[]> {
   const API_URL = process.env.API_URL!;
