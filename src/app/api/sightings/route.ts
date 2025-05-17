@@ -14,7 +14,6 @@ export async function GET() {
 
     return NextResponse.json({ data });
   } catch (err) {
-    console.error("Error in UFO sightings API route:", err);
     return NextResponse.json(
       {
         error: "An unexpected error occurred",

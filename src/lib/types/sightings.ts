@@ -29,6 +29,12 @@ export interface WeekData {
   totalSightings: number;
 }
 
+export type WeeklySighting = {
+  parsedDate: Date;
+  weekNumber: number;
+  year: number;
+};
+
 export interface ApiResponse {
   data: UfoSighting[];
   error?: string;
