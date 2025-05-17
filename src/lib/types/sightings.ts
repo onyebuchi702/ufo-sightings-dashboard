@@ -4,6 +4,7 @@ export interface UfoSighting {
   count: number;
   location: string;
   description: string;
+  sightings: number;
 }
 
 export interface ProcessedSighting extends UfoSighting {
@@ -33,6 +34,14 @@ export type WeeklySighting = {
   parsedDate: Date;
   weekNumber: number;
   year: number;
+};
+
+export type RawSighting = {
+  date: string;
+  parsedDate?: string | Date;
+  weekNumber?: number;
+  year?: number;
+  sightings?: number;
 };
 
 export interface ApiResponse {

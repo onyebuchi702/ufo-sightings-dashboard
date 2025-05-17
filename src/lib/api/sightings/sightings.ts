@@ -13,13 +13,18 @@ export async function fetchUfoSightings(): Promise<ProcessedSighting[]> {
 
     const data = (await response.json()) as UfoSighting[];
 
+    const parseDateUtc = (dateString: string): Date => {
+      const [day, month, year] = dateString.split("/").map(Number);
+      return new Date(Date.UTC(year, month - 1, day, 12, 0, 0));
+    };
+
     const processedData = data.map((sighting) => {
-      const parsedDate = new Date(sighting.date);
+      const parsedDate = parseDateUtc(sighting.date);
       return {
         ...sighting,
         parsedDate,
         weekNumber: getWeekNumber(parsedDate),
-        year: parsedDate.getFullYear(),
+        year: parsedDate.getUTCFullYear(),
       };
     });
 

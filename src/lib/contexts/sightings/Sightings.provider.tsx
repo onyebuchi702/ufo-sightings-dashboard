@@ -12,6 +12,7 @@ import {
 } from "@/lib/utils";
 import React, { ReactNode, useMemo, useState } from "react";
 import { SightingsContext } from "./Sightings.context";
+import { normalizeSightings } from "./Sightings.util";
 
 const FIVE_MINS = 1000 * 60 * 5;
 
@@ -24,7 +25,10 @@ export const SightingsProvider = ({ children }: { children: ReactNode }) => {
     error,
   } = useQuery({
     queryKey: ["ufoSightings"],
-    queryFn: fetchSightingsFromBackend,
+    queryFn: async () => {
+      const raw = await fetchSightingsFromBackend();
+      return normalizeSightings(raw);
+    },
     staleTime: FIVE_MINS,
   });
 
@@ -79,7 +83,8 @@ export const SightingsProvider = ({ children }: { children: ReactNode }) => {
       const daySightings = sightings.filter((s) =>
         isSameDay(s.parsedDate, date)
       );
-      const count = daySightings.reduce((sum, s) => sum + s.count, 0);
+
+      const count = daySightings.reduce((sum, s) => sum + s.sightings, 0);
 
       return {
         date,

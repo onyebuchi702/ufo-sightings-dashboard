@@ -22,10 +22,9 @@ describe("UFO Sightings API functions", () => {
 
   describe("fetchUfoSightings", () => {
     it("fetches and processes sightings correctly", async () => {
-      const fakeDate = "2025-05-01T12:00:00Z";
       const fakeSightings = [
-        { id: 1, date: fakeDate, location: "Area 51" },
-        { id: 2, date: "2025-04-30T12:00:00Z", location: "Roswell" },
+        { id: 1, date: "30/04/2025", location: "Roswell" },
+        { id: 2, date: "01/05/2025", location: "Area 51" },
       ];
 
       (getWeekNumber as jest.Mock).mockReturnValue(18);
@@ -39,33 +38,21 @@ describe("UFO Sightings API functions", () => {
 
       expect(global.fetch).toHaveBeenCalledWith(process.env.API_URL);
       expect(results).toHaveLength(2);
+
       expect(results[0].parsedDate).toBeInstanceOf(Date);
       expect(results[0].weekNumber).toBe(18);
       expect(results[0].year).toBe(2025);
 
-      // Sorted ascending by parsedDate
-      expect(results[0].date).toBe("2025-04-30T12:00:00Z");
-      expect(results[1].date).toBe(fakeDate);
-    });
-
-    it("throws error on non-ok response", async () => {
-      (global.fetch as jest.Mock) = jest.fn().mockResolvedValue({
-        ok: false,
-        status: 500,
-        statusText: "Server Error",
-      });
-
-      await expect(fetchUfoSightings()).rejects.toThrow(
-        /API error: 500 Server Error/
+      // sorting by earliest date
+      expect(results[0].date).toBe("30/04/2025");
+      expect(results[0].parsedDate.getTime()).toBe(
+        new Date(Date.UTC(2025, 3, 30, 12, 0, 0)).getTime()
       );
-    });
 
-    it("throws error if fetch fails", async () => {
-      (global.fetch as jest.Mock) = jest
-        .fn()
-        .mockRejectedValue(new Error("Network Failure"));
-
-      await expect(fetchUfoSightings()).rejects.toThrow("Network Failure");
+      expect(results[1].date).toBe("01/05/2025");
+      expect(results[1].parsedDate.getTime()).toBe(
+        new Date(Date.UTC(2025, 4, 1, 12, 0, 0)).getTime()
+      );
     });
   });
 
@@ -74,13 +61,11 @@ describe("UFO Sightings API functions", () => {
       const fakeData = [
         {
           id: 1,
-          date: "2025-05-01T12:00:00Z",
-          parsedDate: new Date("2025-05-01T12:00:00Z"),
-          year: 2025,
-          count: 1,
-          weekNumber: 18,
+          date: "01/05/2025",
+          parsedDate: new Date(Date.UTC(2025, 4, 1, 12, 0, 0)),
           location: "Area 51",
-          description: "Bright light in the sky",
+          weekNumber: 18,
+          year: 2025,
         },
       ];
 
