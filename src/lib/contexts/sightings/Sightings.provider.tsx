@@ -12,9 +12,10 @@ import {
 } from "@/lib/utils";
 import React, { ReactNode, useMemo, useState } from "react";
 import { SightingsContext } from "./Sightings.context";
-import { normalizeSightings } from "./Sightings.util";
+import { normalizeSightings, retrySpacing } from "./Sightings.util";
 
 const FIVE_MINS = 1000 * 60 * 5;
+const NUMBER_OF_RETRIES = 3;
 
 export const SightingsProvider = ({ children }: { children: ReactNode }) => {
   const [currentWeekIndex, setCurrentWeekIndex] = useState(0);
@@ -22,6 +23,7 @@ export const SightingsProvider = ({ children }: { children: ReactNode }) => {
   const {
     data: sightings = [],
     isLoading,
+    refetch,
     error,
   } = useQuery({
     queryKey: ["ufoSightings"],
@@ -29,6 +31,8 @@ export const SightingsProvider = ({ children }: { children: ReactNode }) => {
       const raw = await fetchSightingsFromBackend();
       return normalizeSightings(raw);
     },
+    retry: NUMBER_OF_RETRIES,
+    retryDelay: retrySpacing,
     staleTime: FIVE_MINS,
   });
 
@@ -135,6 +139,7 @@ export const SightingsProvider = ({ children }: { children: ReactNode }) => {
         navigateToPreviousWeek,
         hasNextWeek,
         hasPreviousWeek,
+        refetch,
       }}
     >
       {children}

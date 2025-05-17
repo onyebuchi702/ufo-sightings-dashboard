@@ -25,3 +25,6 @@ export const normalizeSightings = (
     })
     .filter(Boolean) as ProcessedSighting[];
 };
+
+export const retrySpacing = (attemptNumber: number) =>
+  Math.min(1000 * 2 ** attemptNumber, 30000);

@@ -17,6 +17,7 @@ type SightingsContextType = {
   navigateToPreviousWeek: () => void;
   hasNextWeek: boolean;
   hasPreviousWeek: boolean;
+  refetch: () => void;
 };
 
 export const SightingsContext = createContext<SightingsContextType | undefined>(
