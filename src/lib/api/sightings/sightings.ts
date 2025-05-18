@@ -64,10 +64,12 @@ export async function fetchSightingsFromBackend(): Promise<
       throw new Error(json.error);
     }
 
-    return json.data.map((sighting: any) => ({
-      ...sighting,
-      parsedDate: new Date(sighting.parsedDate),
-    }));
+    return json.data.map(
+      (sighting: { parsedDate: string | number | Date }) => ({
+        ...sighting,
+        parsedDate: new Date(sighting.parsedDate),
+      })
+    );
   } catch (err) {
     throw err;
   }

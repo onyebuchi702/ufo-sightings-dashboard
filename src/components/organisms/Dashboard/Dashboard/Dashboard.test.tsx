@@ -4,7 +4,13 @@ import { Dashboard } from "./Dashboard.component";
 import { useSightings } from "@/lib/contexts";
 
 jest.mock("../WeekNavigator", () => ({
-  WeekNavigator: ({ onNextWeek, onPreviousWeek }: any) => (
+  WeekNavigator: ({
+    onNextWeek,
+    onPreviousWeek,
+  }: {
+    onNextWeek: () => void;
+    onPreviousWeek: () => void;
+  }) => (
     <div>
       <button onClick={onPreviousWeek}>Previous Week</button>
       <button onClick={onNextWeek}>Next Week</button>

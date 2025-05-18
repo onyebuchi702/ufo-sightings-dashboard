@@ -13,14 +13,24 @@ jest.mock("recharts", () => {
     BarChart: ({ children }: { children: React.ReactNode }) => (
       <div data-testid="bar-chart">{children}</div>
     ),
-    Bar: (props: any) => <div data-testid="bar" {...props} />,
-    XAxis: (props: any) => <div data-testid="x-axis" {...props} />,
-    YAxis: (props: any) => <div data-testid="y-axis" {...props} />,
-    CartesianGrid: (props: any) => (
+    Bar: (props: Record<string, unknown>) => (
+      <div data-testid="bar" {...props} />
+    ),
+    XAxis: (props: Record<string, unknown>) => (
+      <div data-testid="x-axis" {...props} />
+    ),
+    YAxis: (props: Record<string, unknown>) => (
+      <div data-testid="y-axis" {...props} />
+    ),
+    CartesianGrid: (props: Record<string, unknown>) => (
       <div data-testid="cartesian-grid" {...props} />
     ),
-    Tooltip: (props: any) => <div data-testid="tooltip" {...props} />,
-    Legend: (props: any) => <div data-testid="legend" {...props} />,
+    Tooltip: (props: Record<string, unknown>) => (
+      <div data-testid="tooltip" {...props} />
+    ),
+    Legend: (props: Record<string, unknown>) => (
+      <div data-testid="legend" {...props} />
+    ),
   };
 });
 

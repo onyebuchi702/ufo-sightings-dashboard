@@ -46,6 +46,7 @@ describe("SightingsProvider", () => {
         date: "",
         location: "",
         description: "",
+        sightings: 0,
       },
     ]);
 
