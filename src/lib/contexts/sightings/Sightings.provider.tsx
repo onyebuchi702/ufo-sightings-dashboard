@@ -2,7 +2,7 @@
 
 import { fetchSightingsFromBackend } from "@/lib/api";
 import { useQuery } from "@tanstack/react-query";
-import { ProcessedSighting, WeekDay } from "@/lib/types";
+import { ProcessedSighting, WeekDay } from "@/types";
 import {
   getFirstDayOfWeek,
   getLastDayOfWeek,

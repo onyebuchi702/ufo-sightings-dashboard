@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/atoms";
-import { WeekData } from "@/lib/types";
+import { WeekData } from "@/types";
 import { formatDateRange } from "@/lib/utils";
 import React from "react";
 

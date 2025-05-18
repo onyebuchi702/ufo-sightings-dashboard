@@ -7,7 +7,7 @@ import {
   isSameDay as dfIsSameDay,
   format,
 } from "date-fns";
-import { WeeklySighting } from "@/lib/types";
+import { WeeklySighting } from "@/types";
 
 export const getWeekNumber = (date: Date): number => {
   return getISOWeek(date);

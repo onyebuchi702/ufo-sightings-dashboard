@@ -1,4 +1,4 @@
-import { WeekData } from "@/lib/types";
+import { WeekData } from "@/types";
 
 export interface SightingsChartProps {
   weekData: WeekData | null;

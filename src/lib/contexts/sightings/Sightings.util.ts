@@ -1,4 +1,4 @@
-import { RawSighting, ProcessedSighting } from "@/lib/types";
+import { RawSighting, ProcessedSighting } from "@/types";
 import { getWeekNumber } from "@/lib/utils";
 
 export const normalizeSightings = (

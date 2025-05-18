@@ -1,4 +1,4 @@
-import { ProcessedSighting, WeekData } from "@/lib/types";
+import { ProcessedSighting, WeekData } from "@/types";
 import { createContext, useContext } from "react";
 
 type SightingsContextType = {

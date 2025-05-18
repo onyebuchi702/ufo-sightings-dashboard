@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { WeekNavigator } from "./WeekNavigator.component";
 import { formatDateRange } from "@/lib/utils";
-import { WeekData } from "@/lib/types";
+import { WeekData } from "@/types";
 
 describe("WeekNavigator", () => {
   const weekData: WeekData = {

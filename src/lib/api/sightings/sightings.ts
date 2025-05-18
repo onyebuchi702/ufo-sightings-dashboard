@@ -1,4 +1,4 @@
-import { ProcessedSighting, UfoSighting, ApiResponse } from "@/lib/types";
+import { ProcessedSighting, UfoSighting, ApiResponse } from "@/types";
 import { getWeekNumber } from "@/lib/utils";
 
 export async function fetchUfoSightings(): Promise<ProcessedSighting[]> {
