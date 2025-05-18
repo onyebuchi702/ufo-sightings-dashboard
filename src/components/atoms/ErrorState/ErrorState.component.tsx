@@ -1,4 +1,4 @@
-import { Button } from "./Button";
+import { Button } from "../Button/Button.component";
 
 interface ErrorStateProps {
   message: string;

@@ -1,4 +1,4 @@
-export * from "./Button";
-export * from "./LoadingSpinner";
-export * from "./Card";
-export * from "./ErrorState";
+export { Button } from "./Button";
+export { LoadingSpinner } from "./LoadingSpinner";
+export { Card } from "./Card";
+export { ErrorState } from "./ErrorState";
