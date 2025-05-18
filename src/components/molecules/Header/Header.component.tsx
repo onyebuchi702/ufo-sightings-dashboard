@@ -4,12 +4,12 @@ export const Header = () => {
       <div className="container mx-auto py-6 px-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-3">
-            {/* UFO Icon */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-8 w-8"
               viewBox="0 0 20 20"
               fill="currentColor"
+              role="img"
             >
               <path
                 fillRule="evenodd"

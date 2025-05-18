@@ -32,7 +32,6 @@ export async function fetchUfoSightings(): Promise<ProcessedSighting[]> {
       (a, b) => a.parsedDate.getTime() - b.parsedDate.getTime()
     );
   } catch (error) {
-    console.error("Error fetching UFO sightings:", error);
     throw error;
   }
 }
@@ -42,7 +41,6 @@ export async function fetchUfoSightingsFromApi(): Promise<ApiResponse> {
     const data = await fetchUfoSightings();
     return { data };
   } catch (error) {
-    console.error("Error in API route:", error);
     return {
       data: [],
       error: error instanceof Error ? error.message : "Unknown error occurred",
@@ -71,7 +69,6 @@ export async function fetchSightingsFromBackend(): Promise<
       parsedDate: new Date(sighting.parsedDate),
     }));
   } catch (err) {
-    console.error("Error in API route:", err);
     throw err;
   }
 }
