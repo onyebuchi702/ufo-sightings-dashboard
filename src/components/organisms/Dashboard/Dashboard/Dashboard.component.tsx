@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { SightingsChart } from "../SightingsChart/SightingsChart";
-import { WeekNavigator } from "../WeekNavigator/WeekNavigator";
+import { SightingsChart } from "../SightingsChart";
+import { WeekNavigator } from "../WeekNavigator";
 import { useSightings } from "@/lib/contexts";
 import { Card, ErrorState, LoadingSpinner } from "@/components/atoms";
 

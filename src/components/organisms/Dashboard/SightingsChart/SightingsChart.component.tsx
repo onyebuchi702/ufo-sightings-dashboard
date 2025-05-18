@@ -12,7 +12,7 @@ import {
   Legend,
 } from "recharts";
 import { SightingsChartProps } from "./SightingsChart.type";
-import { SightingsChartTooltip } from "./SightingsChartTooltip";
+import { SightingsChartTooltip } from "./SightingsChartTooltip.component";
 
 export const SightingsChart = ({
   weekData,

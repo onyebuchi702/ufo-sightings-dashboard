@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, jest, test } from "@jest/globals";
 import { formatDayShort } from "@/lib/utils";
-import { SightingsChart } from "./SightingsChart";
+import { SightingsChart } from "./SightingsChart.component";
 
 jest.mock("recharts", () => {
   const OriginalModule = jest.requireActual("recharts");

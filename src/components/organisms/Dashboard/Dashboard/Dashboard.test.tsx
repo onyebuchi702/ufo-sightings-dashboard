@@ -1,9 +1,9 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { Dashboard } from "./Dashboard";
+import { Dashboard } from "./Dashboard.component";
 import { useSightings } from "@/lib/contexts";
 
-jest.mock("../WeekNavigator/WeekNavigator", () => ({
+jest.mock("../WeekNavigator", () => ({
   WeekNavigator: ({ onNextWeek, onPreviousWeek }: any) => (
     <div>
       <button onClick={onPreviousWeek}>Previous Week</button>
@@ -12,7 +12,7 @@ jest.mock("../WeekNavigator/WeekNavigator", () => ({
   ),
 }));
 
-jest.mock("../SightingsChart/SightingsChart", () => ({
+jest.mock("../SightingsChart", () => ({
   SightingsChart: () => <div>SightingsChart</div>,
 }));
 
